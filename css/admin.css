@@ -1,0 +1,4 @@
+form.gt_newaccount div {width: 150px; float: left;}
+form.gt_newaccount input.text {width: 140px; height: 2em;}
+form.gt_newaccount input {height: 2em;}
+form.gt_newaccount div label {display: block; width: 150px; color: #999; font-size: .8em;}
