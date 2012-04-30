@@ -3,13 +3,9 @@
 Plugin Name: Group Twitter
 Plugin URI: http://www.strangerstudios.com/wordpress-plugins/grouptwitter/
 Description: Cache Twitter updates from multiple accounts.
-Version: .2
+Version: .2.1
 Author: Jason Coleman
 Author URI: http://www.strangerstudios.com/
-
-Updates
-= .2 =
-* Added widget.
 */
 
 	global $wpdb, $wp_grouptwitter, $wp_grouptwitter_accounts, $gt_secretkey;

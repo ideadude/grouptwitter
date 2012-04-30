@@ -63,7 +63,7 @@
 		foreach($gtaccounts as $gta)
 		{
 			echo $gta->name . "[";
-			$Twitter = new Twitter($gta->id);
+			$Twitter = new GT_Twitter($gta->id);
 			$n = $Twitter->rebuild_archive('America/New_York');
 			if($n !== FALSE)
 			{

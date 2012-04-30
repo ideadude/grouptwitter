@@ -1,5 +1,5 @@
 <?php
-class Twitter {
+class GT_Twitter {
   public function __construct($twitter_id) {
 	global $wpdb, $wp_grouptwitter_accounts;
 	$this->id = (int)$twitter_id;
@@ -11,23 +11,18 @@ class Twitter {
 	if ($since_id && $since_id != '') {
       $url .= '&since_id=' . $since_id;
     }
-    $c = curl_init();
-    curl_setopt($c, CURLOPT_URL, $url);
-    curl_setopt($c, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($c, CURLOPT_CONNECTTIMEOUT, 3);
-    curl_setopt($c, CURLOPT_TIMEOUT, 5);
-    $response = curl_exec($c);
-    $responseInfo = curl_getinfo($c);
-    curl_close($c);
-    if ($response != '' && intval($responseInfo['http_code']) == 200) {
-      if (class_exists('SimpleXMLElement')) {
-        return new SimpleXMLElement($response);
-      } else {
-        return $response;
-      }
-    } else {
-      return false;
-    }
+    
+	$response = wp_remote_retrieve_body(wp_remote_get($url));
+	if(!empty($response))
+	{
+		if (class_exists('SimpleXMLElement')) {
+		  return new SimpleXMLElement($response);
+		} else {
+		  return $response;
+		}
+	}
+	else
+		return false;
   }
  
   public function rebuild_archive($your_timezone) {
